@@ -2,11 +2,34 @@
 https://github.com/protobuf-net/protobuf-net
 
 ---
-- ### Supported Runtimes
-  - .Net Standard 2.1+
-- ### Media Type
-  - application/x-protobuf
+### Supported Runtimes
+- .Net Standard 2.1+
+### Media Type
+- application/x-protobuf
+
+
+## Runtime Installation
+
+You can use the following command in the Package Manager Console:
+
+###### For Server Side 
+
+```ps
+Install-Package Csp.AspNetCore.Mvc.Protobuf
+```
+
+###### For Client Side
+
+```ps
+Install-Package Csp.Net.Http.Protobuf.Extensions
+```
+
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| [Csp.AspNetCore.Mvc.Protobuf](https://www.nuget.org/packages/Csp.AspNetCore.Mvc.Protobuf/) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/v/Csp.AspNetCore.Mvc.Protobuf) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/dt/Csp.AspNetCore.Mvc.Protobuf) | 
+| [Csp.Net.Http.Protobuf.Extensions](https://www.nuget.org/packages/Csp.Net.Http.Protobuf.Extensions/) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/v/Csp.Net.Http.Protobuf.Extensions) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/dt/Csp.Net.Http.Protobuf.Extensions) |
 ---
+
 ## Sample Usage
 ### Server Side
 ```cs
