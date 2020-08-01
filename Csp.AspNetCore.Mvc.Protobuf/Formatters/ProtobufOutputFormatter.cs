@@ -15,7 +15,7 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
     {
         private const string protoMediaType = "application/x-protobuf";
 
-        private TypeModel _model = RuntimeTypeModel.Default;
+        private readonly TypeModel _model = RuntimeTypeModel.Default;
 
         public ProtobufOutputFormatter()
         {

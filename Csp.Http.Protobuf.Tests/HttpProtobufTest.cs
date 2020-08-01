@@ -1,10 +1,7 @@
 using Csp.Http.Protobuf.Tests.Api;
 using Csp.Net.Http.Protobuf.Extensions;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection;
 using ProtoBuf;
 using System;
 using System.IO;

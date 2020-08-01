@@ -5,7 +5,6 @@ using Microsoft.Net.Http.Headers;
 using ProtoBuf;
 using ProtoBuf.Meta;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,7 +18,7 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
     {
         private const string protoMediaType = "application/x-protobuf";
 
-        private TypeModel _model = RuntimeTypeModel.Default;
+        private readonly TypeModel _model = RuntimeTypeModel.Default;
 
         public ProtobufInputFormatter()
         {
@@ -45,7 +44,7 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
                 }
 
                 var parsed = Serializer.Deserialize(context.ModelType, req.Body);
-                
+
                 return await InputFormatterResult.SuccessAsync(parsed);
             }
             catch
