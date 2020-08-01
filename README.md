@@ -7,7 +7,8 @@ https://github.com/protobuf-net/protobuf-net
 ### Media Type
 - application/x-protobuf
 
-### Runtime Installation
+
+## Runtime Installation
 
 You can use the following command in the Package Manager Console:
 
