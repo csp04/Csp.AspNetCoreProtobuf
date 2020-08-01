@@ -30,8 +30,8 @@ Install-Package Csp.Net.Http.Protobuf.Extensions
 
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| [Csp.AspNetCore.Mvc.Protobuf](https://www.nuget.org/packages/Csp.AspNetCore.Mvc.Protobuf/) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/v/Csp.AspNetCore.Mvc.Protobuf) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/dt/Csp.AspNetCore.Mvc.Protobuf) |
-| [Csp.Net.Http.Protobuf.Extensions](https://www.nuget.org/packages/Csp.Net.Http.Protobuf.Extensions/) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/v/Csp.Net.Http.Protobuf.Extensions) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/dt/Csp.Net.Http.Protobuf.Extensions) |
+| [Csp.AspNetCore.Mvc.Protobuf](https://www.nuget.org/packages/Csp.AspNetCore.Mvc.Protobuf/) | ![Nuget](https://img.shields.io/nuget/v/Csp.AspNetCore.Mvc.Protobuf) | ![Nuget](https://img.shields.io/nuget/dt/Csp.AspNetCore.Mvc.Protobuf) |
+| [Csp.Net.Http.Protobuf.Extensions](https://www.nuget.org/packages/Csp.Net.Http.Protobuf.Extensions/) | ![Nuget](https://img.shields.io/nuget/v/Csp.Net.Http.Protobuf.Extensions) | ![Nuget](https://img.shields.io/nuget/dt/Csp.Net.Http.Protobuf.Extensions) |
 
 ---
 
