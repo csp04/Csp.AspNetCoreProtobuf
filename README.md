@@ -1,5 +1,7 @@
-# Protobuf for ASP.NET Core
+# Protobuf for ASP.NET Core | Web APIs
 https://github.com/protobuf-net/protobuf-net
+
+A lighter way to transfer data through http. 
 
 ---
 ### Supported Runtimes
