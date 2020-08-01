@@ -17,32 +17,6 @@ using Xunit;
 
 namespace Csp.Http.Protobuf.Tests
 {
-    // I'm having issue regarding post/put/delete method. Nothing has been delivered when using TestServer.
-    // In ProtobufInputFormatter, request body is being nulled.
-    // I got this code here https://github.com/dotnet/aspnetcore/issues/18463#issuecomment-613189489
-    // You can remove this code in WebHostBuilder configuration if you want to see the bug.
-    public class UnitTestStartupFilter : IStartupFilter
-    {
-        public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
-        {
-            return app =>
-            {
-                app.Use(async (context, next) =>
-                {
-                    context.Request.EnableBuffering();
-                    using (var ms = new MemoryStream())
-                    {
-                        await context.Request.Body.CopyToAsync(ms);
-                        context.Request.ContentLength = ms.Length;
-                    }
-                    context.Request.Body.Seek(0, SeekOrigin.Begin);
-                    await next.Invoke();
-                });
-                next(app);
-            };
-        }
-    }
-
     public class HttpProtobufTest
     {
         private readonly TestServer server;
@@ -52,10 +26,6 @@ namespace Csp.Http.Protobuf.Tests
         {
             server = new TestServer(
                     new WebHostBuilder()
-                    .ConfigureServices(services =>
-                    {
-                        services.AddSingleton<IStartupFilter, UnitTestStartupFilter>();
-                    })
                     .UseStartup<Startup>());
             client = server.CreateClient();
         }
