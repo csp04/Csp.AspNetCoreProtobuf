@@ -9,11 +9,12 @@
     <Version>0.1.0</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseExpression>apache-2.0</PackageLicenseExpression>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/csp04/Csp.Http.Protobuf.Implementation</RepositoryUrl>
     <PackageTags>protobuf formatters asp-net-core</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Description>Protobuf for ASP.NET Core</Description>
+    <Copyright>Copyright 2020 | Charlie Porciuncula</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
