@@ -4,7 +4,6 @@ https://github.com/protobuf-net/protobuf-net
 A lighter way to transfer data through http. 
 
 ---
-
 ### Supported Runtimes
 - .Net Standard 2.1+
 
@@ -28,23 +27,10 @@ Install-Package Csp.AspNetCore.Mvc.Protobuf
 Install-Package Csp.Net.Http.Protobuf.Extensions
 ```
 
-<table>
-    <tr>
-        <td>Package</td>
-        <td>Version</td>
-        <td>Downloads</td>
-    </tr>
-    <tr>
-        <td> <a href="https://www.nuget.org/packages/Csp.AspNetCore.Mvc.Protobuf" >Csp.AspNetCore.Mvc.Protobuf</a> </td>
-        <td> <img src="https://img.shields.io/nuget/v/Csp.AspNetCore.Mvc.Protobuf" /> </td>
-        <td> <img src="https://img.shields.io/nuget/dt/Csp.AspNetCore.Mvc.Protobuf" /> </td>
-    </tr>
-    <tr>
-        <td> <a href="https://www.nuget.org/packages/Csp.Net.Http.Protobuf.Extensions" >Csp.Net.Http.Protobuf.Extensions</a> </td>
-        <td> <img src="https://img.shields.io/nuget/v/Csp.Net.Http.Protobuf.Extensions" /> </td>
-        <td> <img src="https://img.shields.io/nuget/dt/Csp.Net.Http.Protobuf.Extensions" /> </td>
-    </tr>
-</table>
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| [Csp.AspNetCore.Mvc.Protobuf](https://www.nuget.org/packages/Csp.AspNetCore.Mvc.Protobuf/) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/v/Csp.AspNetCore.Mvc.Protobuf) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/dt/Csp.AspNetCore.Mvc.Protobuf) |
+| [Csp.Net.Http.Protobuf.Extensions](https://www.nuget.org/packages/Csp.Net.Http.Protobuf.Extensions/) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/v/Csp.Net.Http.Protobuf.Extensions) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/dt/Csp.Net.Http.Protobuf.Extensions) |
 
 ---
 
