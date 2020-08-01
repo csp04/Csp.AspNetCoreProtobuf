@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc.Formatters;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 using ProtoBuf;
+using ProtoBuf.Meta;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
@@ -14,6 +19,8 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
     {
         private const string protoMediaType = "application/x-protobuf";
 
+        private TypeModel _model = RuntimeTypeModel.Default;
+
         public ProtobufInputFormatter()
         {
             SupportedMediaTypes.Add(MediaTypeHeaderValue.Parse(protoMediaType));
@@ -21,7 +28,7 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
 
         protected override bool CanReadType(Type type)
         {
-            return type.IsClass;
+            return _model.CanSerializeContractType(type);
         }
 
         public async override Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context)
@@ -30,11 +37,15 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
             {
                 var req = context.HttpContext.Request;
 
-                using var body = new MemoryStream();
-                await req.Body.CopyToAsync(body);
-                body.Position = 0;
-                var parsed = Serializer.Deserialize(context.ModelType, body);
+                if (!req.Body.CanSeek)
+                {
+                    req.EnableBuffering();
+                    await req.Body.DrainAsync(CancellationToken.None);
+                    req.Body.Seek(0L, SeekOrigin.Begin);
+                }
 
+                var parsed = Serializer.Deserialize(context.ModelType, req.Body);
+                
                 return await InputFormatterResult.SuccessAsync(parsed);
             }
             catch
