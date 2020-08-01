@@ -6,6 +6,7 @@ A lighter way to transfer data through http.
 ---
 ### Supported Runtimes
 - .Net Standard 2.1+
+
 ### Media Type
 - application/x-protobuf
 
