@@ -1,37 +1,66 @@
-## Welcome to GitHub Pages
+# Protobuf for ASP.NET Core | Web APIs
+https://github.com/protobuf-net/protobuf-net
 
-You can use the [editor on GitHub](https://github.com/csp04/Csp.AspNetCoreProtobuf/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+A lighter way to transfer data through http. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+---
+### Supported Runtimes
+- .Net Standard 2.1+
+### Media Type
+- application/x-protobuf
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Runtime Installation
 
-```markdown
-Syntax highlighted code block
+You can use the following command in the Package Manager Console:
 
-# Header 1
-## Header 2
-### Header 3
+###### For Server Side 
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```ps
+Install-Package Csp.AspNetCore.Mvc.Protobuf
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+###### For Client Side
 
-### Jekyll Themes
+```ps
+Install-Package Csp.Net.Http.Protobuf.Extensions
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/csp04/Csp.AspNetCoreProtobuf/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| [Csp.AspNetCore.Mvc.Protobuf](https://www.nuget.org/packages/Csp.AspNetCore.Mvc.Protobuf/) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/v/Csp.AspNetCore.Mvc.Protobuf) | ![Csp.AspNetCore.Mvc.Protobuf](https://img.shields.io/nuget/dt/Csp.AspNetCore.Mvc.Protobuf) | 
+| [Csp.Net.Http.Protobuf.Extensions](https://www.nuget.org/packages/Csp.Net.Http.Protobuf.Extensions/) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/v/Csp.Net.Http.Protobuf.Extensions) | ![Csp.Net.Http.Protobuf.Extensions](https://img.shields.io/nuget/dt/Csp.Net.Http.Protobuf.Extensions) |
+---
 
-### Support or Contact
+## Sample Usage
+### Server Side
+```cs
+using Csp.AspNetCore.Mvc.Protobuf;
+```
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllers()
+            .AddProtobufSerializer(true); //true if use as default
+}
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Client Side
+```cs
+using Csp.Net.Http.Protobuf.Extensions;
+...
+var client = new HttpClient() { ... };
+```
+
+##### Get
+```cs
+var forecasts = await client.GetFromProtoAsync<WeatherForecast[]>("/weatherforecast");
+```
+##### Post
+```cs
+using var response = await client.PostAsProtoAsync("/weatherforecast", new WeatherForecast { ... });
+
+using var stream = await response.Content.ReadAsStreamAsync();
+
+var forecast = Serializer.Deserialize<WeatherForecast>(stream);
+```
