@@ -31,7 +31,7 @@ var client = new HttpClient() { ... };
 ```cs
 var forecasts = await client.GetFromProtoAsync<WeatherForecast[]>("/weatherforecast");
 ```
-#### Post
+##### Post
 ```cs
 using var response = await client.PostAsProtoAsync("/weatherforecast", new WeatherForecast { ... });
 
