@@ -45,8 +45,8 @@ namespace Csp.Http.Protobuf.Tests
 
     public class HttpProtobufTest
     {
-        readonly TestServer server;
-        readonly HttpClient client;
+        private readonly TestServer server;
+        private readonly HttpClient client;
 
         public HttpProtobufTest()
         {
@@ -67,6 +67,7 @@ namespace Csp.Http.Protobuf.Tests
 
             Assert.Equal(5, forecasts.Where(f => f.Summary != null).Count());
         }
+
         [Fact]
         public async Task Protobuf_ShouldReturnAnyCount()
         {
@@ -93,7 +94,7 @@ namespace Csp.Http.Protobuf.Tests
         public async Task Protobuf_CanPostJsonAndReceiveProtobuf()
         {
             using var response = await client.PostAsJsonAsync("/weatherforecast/json", new WeatherForecast { Summary = "Test" });
-            
+
             using var stream = await response.Content.ReadAsStreamAsync();
 
             var forecast = Serializer.Deserialize<WeatherForecast>(stream);
@@ -136,7 +137,6 @@ namespace Csp.Http.Protobuf.Tests
                 RequestUri = new Uri("/weatherforecast", UriKind.Relative),
                 Method = HttpMethod.Post
             };
-
 
             using var ms = new MemoryStream(data);
             var content = new StreamContent(ms);

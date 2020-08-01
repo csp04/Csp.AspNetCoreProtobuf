@@ -3,7 +3,6 @@ using Microsoft.Net.Http.Headers;
 using ProtoBuf;
 using System;
 using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
@@ -35,7 +34,7 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
                 await req.Body.CopyToAsync(body);
                 body.Position = 0;
                 var parsed = Serializer.Deserialize(context.ModelType, body);
-                
+
                 return await InputFormatterResult.SuccessAsync(parsed);
             }
             catch

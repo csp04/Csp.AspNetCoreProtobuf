@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 
 namespace Csp.Http.Protobuf.Tests.Api.Controllers
 {
@@ -73,7 +72,5 @@ namespace Csp.Http.Protobuf.Tests.Api.Controllers
         {
             return new WeatherForecast { Summary = id.ToString() };
         }
-
-
     }
 }
