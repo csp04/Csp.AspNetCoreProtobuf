@@ -2,11 +2,28 @@
 https://github.com/protobuf-net/protobuf-net
 
 ---
-- ### Supported Runtimes
-  - .Net Standard 2.1+
-- ### Media Type
-  - application/x-protobuf
+### Supported Runtimes
+- .Net Standard 2.1+
+### Media Type
+- application/x-protobuf
+
+### Runtime Installation
+
+You can use the following command in the Package Manager Console:
+
+###### For Server Side 
+
+```ps
+Install-Package Csp.AspNetCore.Mvc.Protobuf
+```
+
+###### For Client Side
+
+```ps
+Install-Package Csp.Net.Http.Protobuf.Extensions
+```
 ---
+
 ## Sample Usage
 ### Server Side
 ```cs
