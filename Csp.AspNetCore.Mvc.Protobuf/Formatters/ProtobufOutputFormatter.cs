@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Net.Http.Headers;
 using ProtoBuf;
+using ProtoBuf.Meta;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
     {
         private const string protoMediaType = "application/x-protobuf";
 
+        private TypeModel _model = RuntimeTypeModel.Default;
+
         public ProtobufOutputFormatter()
         {
             SupportedMediaTypes.Add(MediaTypeHeaderValue.Parse(protoMediaType));
@@ -21,7 +24,7 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
 
         protected override bool CanWriteType(Type type)
         {
-            return true;
+            return _model.CanSerializeContractType(type);
         }
 
         public override void WriteResponseHeaders(OutputFormatterWriteContext context)
@@ -34,17 +37,15 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
         {
             var httpContext = context.HttpContext;
             var res = httpContext.Response;
-            if (context.Object != null)
+
+            using (var ms = new MemoryStream())
             {
-                using var ms = new MemoryStream();
                 Serializer.Serialize(ms, context.Object);
                 ms.Position = 0;
                 await ms.CopyToAsync(res.Body);
             }
-            else
-            {
-                await Task.CompletedTask;
-            }
+
+            await res.Body.FlushAsync();
         }
     }
 }
