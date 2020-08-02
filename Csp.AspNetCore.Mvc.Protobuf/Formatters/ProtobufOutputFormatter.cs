@@ -5,7 +5,6 @@ using ProtoBuf;
 using ProtoBuf.Meta;
 using System;
 using System.IO;
-using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 
 namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
@@ -41,20 +40,17 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
             var res = httpContext.Response;
 
             var tempFilePath = AspNetCoreFileTemp.CreateTempFile();
-            
-            using(var fw = new FileStream(tempFilePath, FileMode.Create))
+
+            using (var fw = new FileStream(tempFilePath, FileMode.Create))
             {
                 Serializer.Serialize(fw, context.Object);
             }
-            
-            using(var fr = new FileStream(tempFilePath, FileMode.Open))
+
+            using (var fr = new FileStream(tempFilePath, FileMode.Open))
             {
                 await fr.CopyToAsync(res.Body);
             }
             File.Delete(tempFilePath);
-
         }
-
-        
     }
 }
