@@ -4,6 +4,8 @@
 
 A lighter way to transfer data through http. 
 
+**[Change Log](https://github.com/csp04/Csp.AspNetCoreProtobuf/blob/master/ChangeLog.md)**
+
 ---
 ### Supported Runtimes
 - .Net Standard 2.1+
