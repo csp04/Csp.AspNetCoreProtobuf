@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.Formatters;
+﻿using Csp.AspNetCore.Mvc.Protobuf.Internal;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Net.Http.Headers;
 using ProtoBuf;
 using ProtoBuf.Meta;
 using System;
 using System.IO;
+using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 
 namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
@@ -38,14 +40,21 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
             var httpContext = context.HttpContext;
             var res = httpContext.Response;
 
-            using (var ms = new MemoryStream())
+            var tempFilePath = AspNetCoreFileTemp.CreateTempFile();
+            
+            using(var fw = new FileStream(tempFilePath, FileMode.Create))
             {
-                Serializer.Serialize(ms, context.Object);
-                ms.Position = 0;
-                await ms.CopyToAsync(res.Body);
+                Serializer.Serialize(fw, context.Object);
             }
+            
+            using(var fr = new FileStream(tempFilePath, FileMode.Open))
+            {
+                await fr.CopyToAsync(res.Body);
+            }
+            File.Delete(tempFilePath);
 
-            await res.Body.FlushAsync();
         }
+
+        
     }
 }
