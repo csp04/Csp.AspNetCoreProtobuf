@@ -1,10 +1,9 @@
-﻿using Csp.AspNetCore.Mvc.Protobuf.Internal;
-using Microsoft.AspNetCore.Mvc.Formatters;
+﻿using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 using ProtoBuf;
 using ProtoBuf.Meta;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
@@ -39,18 +38,9 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
             var httpContext = context.HttpContext;
             var res = httpContext.Response;
 
-            var tempFilePath = AspNetCoreFileTemp.CreateTempFile();
-
-            using (var fw = new FileStream(tempFilePath, FileMode.Create))
-            {
-                Serializer.Serialize(fw, context.Object);
-            }
-
-            using (var fr = new FileStream(tempFilePath, FileMode.Open))
-            {
-                await fr.CopyToAsync(res.Body);
-            }
-            File.Delete(tempFilePath);
+            using var fbw = new FileBufferingWriteStream();
+            Serializer.Serialize(fbw, context.Object);
+            await fbw.DrainBufferAsync(res.Body);
         }
     }
 }
