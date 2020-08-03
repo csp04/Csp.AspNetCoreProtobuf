@@ -10,7 +10,7 @@ A lighter way to transfer data through http.
 ### Supported Runtimes
 
 - **Csp.AspNetCore.Mvc.Protobuf**
-    - .Net Core 3.1
+    - .Net Core 3.1+
 - **Csp.Net.Http.Protobuf.Extensions**
     - .Net Standard 2.1+
 
