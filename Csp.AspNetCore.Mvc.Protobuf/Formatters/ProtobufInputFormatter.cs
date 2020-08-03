@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Formatters;
+﻿using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 using ProtoBuf;
 using ProtoBuf.Meta;
 using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,14 +34,10 @@ namespace Csp.AspNetCore.Mvc.Protobuf.Formatters
             {
                 var req = context.HttpContext.Request;
 
-                if (!req.Body.CanSeek)
-                {
-                    req.EnableBuffering();
-                    await req.Body.DrainAsync(CancellationToken.None);
-                    req.Body.Seek(0L, SeekOrigin.Begin);
-                }
-
-                var parsed = Serializer.Deserialize(context.ModelType, req.Body);
+                using var fbr = new FileBufferingReadStream(req.Body, 32768);
+                await fbr.DrainAsync(CancellationToken.None);
+                fbr.Position = 0;
+                var parsed = Serializer.Deserialize(context.ModelType, fbr);
 
                 return await InputFormatterResult.SuccessAsync(parsed);
             }
