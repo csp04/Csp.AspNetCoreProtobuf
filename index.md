@@ -4,9 +4,15 @@
 
 A lighter way to transfer data through http. 
 
+**[Change Log](https://github.com/csp04/Csp.AspNetCoreProtobuf/blob/master/ChangeLog.md)**
+
 ---
 ### Supported Runtimes
-- .Net Standard 2.1+
+
+- **Csp.AspNetCore.Mvc.Protobuf**
+    - .Net Core 3.1+
+- **Csp.Net.Http.Protobuf.Extensions**
+    - .Net Standard 2.1+
 
 ### Media Type
 - application/x-protobuf
