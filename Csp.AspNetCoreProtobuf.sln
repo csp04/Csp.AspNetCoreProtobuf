@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csp.Net.Http.Protobuf.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csp.AspNetCore.Mvc.Protobuf", "Csp.AspNetCore.Mvc.Protobuf\Csp.AspNetCore.Mvc.Protobuf.csproj", "{C0E31D18-3B6C-4DB7-9D09-9E0E1500D484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csp.Http.Protobuf.Tests", "Csp.Http.Protobuf.Tests\Csp.Http.Protobuf.Tests.csproj", "{E58104A2-249C-4474-8B22-8C320851EEE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csp.Http.Protobuf.Tests", "Csp.Http.Protobuf.Tests\Csp.Http.Protobuf.Tests.csproj", "{E58104A2-249C-4474-8B22-8C320851EEE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csp.Http.Protobuf.Tests.Api", "Csp.Http.Protobuf.Tests.Api\Csp.Http.Protobuf.Tests.Api.csproj", "{548DADFE-8C8E-4910-8684-91BB2362E77F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csp.Http.Protobuf.Tests.Api", "Csp.Http.Protobuf.Tests.Api\Csp.Http.Protobuf.Tests.Api.csproj", "{548DADFE-8C8E-4910-8684-91BB2362E77F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2542CC41-94A6-4967-9CF6-5EC1B6FF2897}"
 EndProject

@@ -7,12 +7,12 @@
     <Authors>csp04</Authors>
     <Company />
     <Description>Protobuf for ASP.NET Core</Description>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/csp04/Csp.Http.Protobuf.Implementation</RepositoryUrl>
     <PackageTags>protobuf formatters asp-net-core</PackageTags>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <FileVersion>0.0.1.0</FileVersion>
-    <Version>0.1.0</Version>
+    <AssemblyVersion>0.0.1.1</AssemblyVersion>
+    <FileVersion>0.0.1.1</FileVersion>
+    <Version>0.1.1</Version>
     <Copyright>Copyright 2020 | Charlie Porciuncula</Copyright>
   </PropertyGroup>
 
